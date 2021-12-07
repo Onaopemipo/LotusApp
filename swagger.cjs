@@ -369,39 +369,37 @@ module.exports = {
         example: "0141944727", // example of an accountNumber
       },
 
-
-
       generalResponse: {
         type: "string", // data type
         description: "Common response", // desc
         example: "Request submitted successfully", // example of an accountNumber
       },
 
-      "generalResponse": {
-        "type": "object",
-        "properties": {
-          "hasError": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "result": {
-            "$ref": "#/components/schemas/generalResponse"
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalRecord": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
+      // "generalResponse": {
+      //   "type": "object",
+      //   "properties": {
+      //     "hasError": {
+      //       "type": "boolean"
+      //     },
+      //     "message": {
+      //       "type": "string",
+      //       "nullable": true
+      //     },
+      //     "result": {
+      //       "$ref": "#/components/schemas/generalResponse"
+      //     },
+      //     "totalCount": {
+      //       "type": "integer",
+      //       "format": "int32"
+      //     },
+      //     "totalRecord": {
+      //       "type": "integer",
+      //       "format": "int32",
+      //       "readOnly": true
+      //     }
+      //   },
+      //   "additionalProperties": false
+      // },
 
       Error: {
         type: "object", //data type
@@ -1232,79 +1230,79 @@ module.exports = {
       }
     },
 
-    // "/api/Account/getReferee": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
+    "/api/Account/getReferee": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting All referees",
+        "parameters": [
+          {
 
-    //         "name": "accountNo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "nullable": true
-    //         }
-    //       }
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+            "name": "accountNo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          200: {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
     "/api/Account/confirmReferee": {
       "post": {
@@ -1385,782 +1383,782 @@ module.exports = {
       }
     },
 
-    // "/api/Account/fetchcustomersDeposit": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting customer deposit",
-    //     "parameters": [
-    //       {
-    //         "name": "SearchText",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateFrom",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateTo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "Amount",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "number",
-    //           "format": "double"
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/fetchcustomersDeposit": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting customer deposit",
+        "parameters": [
+          {
+            "name": "SearchText",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Account/fetchcustomersWithdrawal": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
-    //         "name": "SearchText",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateFrom",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateTo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "Amount",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "number",
-    //           "format": "double"
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/fetchcustomersWithdrawal": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting All referees",
+        "parameters": [
+          {
+            "name": "SearchText",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Account/fetchAccountOpened": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
-    //         "name": "SearchText",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateFrom",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateTo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "Amount",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "number",
-    //           "format": "double"
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/fetchAccountOpened": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting All referees",
+        "parameters": [
+          {
+            "name": "SearchText",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Account/fetchcustomersTransfers": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
-    //         "name": "SearchText",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateFrom",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "DateTo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "format": "date-time",
-    //           "nullable": true
-    //         }
-    //       },
-    //       {
-    //         "name": "Amount",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "number",
-    //           "format": "double"
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/fetchcustomersTransfers": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting All referees",
+        "parameters": [
+          {
+            "name": "SearchText",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "DateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Account/checkbvn": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
-    //         "name": "accountNo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "required": true,
-    //           "nullable": false
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/checkbvn": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for checking BVN",
+        "parameters": [
+          {
+            "name": "accountNo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "required": true,
+              "nullable": false
+            }
+          },
+        ],
+        "responses": {
+          200: {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Account/checknin": {
-    //   "get": {
-    //     "tags": [
-    //       "Account Operations"
-    //     ],
-    //     "summary": "API for getting All referees",
-    //     "parameters": [
-    //       {
-    //         "name": "accountNo",
-    //         "in": "query",
-    //         "schema": {
-    //           "type": "string",
-    //           "required": true,
-    //           "nullable": false
-    //         }
-    //       },
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Account/checknin": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for checking NIN",
+        "parameters": [
+          {
+            "name": "accountNo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "required": true,
+              "nullable": false
+            }
+          },
+        ],
+        "responses": {
+          200: {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Loan/loanApplication": {
-    //   "post": {
-    //     "tags": [
-    //       "Loan Operations"
-    //     ],
-    //     "summary": "API for loan application",
-    //     "requestBody": {
-    //       "description": "",
-    //       "content": {
-    //         "application/json": {
-    //           "schema": {
-    //             "$ref": "#/components/schemas/loanApplication"
-    //           }
-    //         },
-    //         "text/json": {
-    //           "schema": {
-    //             "$ref": "#/components/schemas/accountNo"
-    //           }
-    //         },
-    //         "application/*+json": {
-    //           "schema": {
-    //             "$ref": "#/components/schemas/accountNo"
-    //           }
-    //         }
-    //       }
-    //     },
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "400": {
-    //         "description": "Bad Request",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "type": "object",
-    //               "additionalProperties": {
-    //                 "type": "string"
-    //               }
-    //             }
-    //           }
-    //         }
-    //       },
-    //       "500": {
-    //         "description": "Server Error"
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Loan/loanApplication": {
+      "post": {
+        "tags": [
+          "Loan Operations"
+        ],
+        "summary": "API for loan application",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loanApplication"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountNo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountNo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
 
-    // "/api/Common/fetchCategories": {
-    //   "get": {
-    //     "tags": [
-    //       "Common Operations"
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Common/fetchCategories": {
+      "get": {
+        "tags": [
+          "Common Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
-    // "/api/Common/fetchAccountTypes": {
-    //   "get": {
-    //     "tags": [
-    //       "Common Operations"
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Common/fetchAccountTypes": {
+      "get": {
+        "tags": [
+          "Common Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
-    // "/api/Common/fetchIndustries": {
-    //   "get": {
-    //     "tags": [
-    //       "Common Operations"
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Common/fetchIndustries": {
+      "get": {
+        "tags": [
+          "Common Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
-    // "/api/Common/fetchAccountOfficer": {
-    //   "get": {
-    //     "tags": [
-    //       "Common Operations"
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Common/fetchAccountOfficer": {
+      "get": {
+        "tags": [
+          "Common Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
   
-    // "/api/Common/fetchDashboardData": {
-    //   "get": {
-    //     "tags": [
-    //       "Common Operations"
-    //     ],
-    //     "responses": {
-    //       "200": {
-    //         "description": "Success",
-    //         "content": {
-    //           "text/plain": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "application/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           },
-    //           "text/json": {
-    //             "schema": {
-    //               "$ref": "#/components/schemas/generalResponse"
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    "/api/Common/fetchDashboardData": {
+      "get": {
+        "tags": [
+          "Common Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
   
   }
 

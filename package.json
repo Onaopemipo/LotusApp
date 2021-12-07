@@ -19,6 +19,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.2.0",
+    "joi": "^17.4.2",
     "mssql": "^7.2.1",
     "node-windows": "^1.0.0-beta.6",
     "nodemon": "^2.0.14",

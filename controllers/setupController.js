@@ -19,70 +19,75 @@ const sqlConfig = {
   },
 };
 const dashboardData = asyncHandler(async (req, res) => {
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("select * from dbo.DropdownValues");
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
-  }
+  res.sendStatus(200)
+  // try {
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query("select * from dbo.DropdownValues");
+  //   console.log(result);
+  //   res.json(result);
+  //   mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 const accountOfficer = asyncHandler(async (req, res) => {
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("select * from dbo.UserAccounts");
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
-  }
+  res.sendStatus(200)
+  // try {
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query("select * from dbo.UserAccounts");
+  //   console.log(result);
+  //   res.json(result);
+  //   mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 
 const industries = asyncHandler(async (req, res) => {
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("SELECT * from dbo.SystemLogs WHERE Action = 'TellerCashWithdrawal'");
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
-  }
+  res.sendStatus(200)
+  // try {
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query("SELECT * from dbo.SystemLogs WHERE Action = 'TellerCashWithdrawal'");
+  //   res.json(result);
+  //   mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 const accountCategories = asyncHandler(async (req, res) => {
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("SELECT * from dbo.SystemLogs WHERE Action = 'TellerCashDeposit'");
-     res.json(result);
-     mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
-  }
+  res.sendStatus(200)
+  // try {
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query("SELECT * from dbo.SystemLogs WHERE Action = 'TellerCashDeposit'");
+  //    res.json(result);
+  //    mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 
 const accountType = asyncHandler(async (req, res) => {
-  let accountId = req.params.id;
-  try {
+  res.sendStatus(200)
+  // let accountId = req.params.id;
+  // try {
 
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("select * from dbo.UserAccounts where AccountType = '" +accountId+ "'");
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
-  }
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query("select * from dbo.UserAccounts where AccountType = '" +accountId+ "'");
+  //   console.log(result);
+  //   res.json(result);
+  //   mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 

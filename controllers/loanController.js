@@ -21,35 +21,39 @@ const sqlConfig = {
 const newLoan = asyncHandler(async (req, res) => {
   let loanValue = req.body;
   console.log('See loan details', loanValue)
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query(`INSERT INTO [dbo].[Loans] (
-      [AccountNo],
-      [AccountName],
-      [PhoneNo],
-      [Email],
-      [Amount],
-      [Duration],
-      [LoanType],
-      [Guarantor],
-      [Justification],
-    ) VALUES (
-      loanValue.accountNo,
-      loanValue.accountName,
-      loanValue.phoneNo,
-      loanValue.email,
-      loanValue.duration,
-      loanValue.loanType,
-      loanValue.guarantor,
-      loanValue.justification,
-    )`);
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
+  if(loanValue){
+    res.sendStatus(200)
   }
+  else res.sendStatus(400)
+  // try {
+  //   let pool = await mssql.connect(sqlConfig);
+  //   let result = await pool.request().query(`INSERT INTO [dbo].[Loans] (
+  //     [AccountNo],
+  //     [AccountName],
+  //     [PhoneNo],
+  //     [Email],
+  //     [Amount],
+  //     [Duration],
+  //     [LoanType],
+  //     [Guarantor],
+  //     [Justification],
+  //   ) VALUES (
+  //     loanValue.accountNo,
+  //     loanValue.accountName,
+  //     loanValue.phoneNo,
+  //     loanValue.email,
+  //     loanValue.duration,
+  //     loanValue.loanType,
+  //     loanValue.guarantor,
+  //     loanValue.justification,
+  //   )`);
+  //   console.log(result);
+  //   res.json(result);
+  //   mssql.close;
+  // } catch (error) {
+  //   console.log(error.message);
+  //   mssql.close;
+  // }
 });
 
 

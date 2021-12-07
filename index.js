@@ -16,30 +16,12 @@ app.use(express.json());
 app.use("/api/Common", setupRoute);
 app.use("/api/Account", accountRoute);
 app.use("/api/Loan", loanRoute);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// const sqlConfig = {
-//   user: "sa",
-//   password: "qwerty",
-//   database: "LotusBankTellerDBTEST",
-//   server: "lotuspaperless\datawarehousea",
-//   port: 50301,
-//   pool: {
-//     max: 10,
-//     min: 0,
-//     idleTimeoutMillis: 30000,
-//   },
-//   options: {
-//     encrypt: true, // for azure
-//     trustServerCertificate: true,
-//   },
-// };
-
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const sqlConfig = {
   user: "superdbuser",
   password: "J@p@n123",
-  database: "hmsdb",
+  database: "LotusPaperless",
   server: "mssql-35101-0.cloudclusters.net",
   port: 35101,
   pool: {

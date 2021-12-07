@@ -1,34 +1,8 @@
-2021-11-15 19:56:02 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\index.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
-2021-11-15 19:56:02 - Started 9644
-2021-11-15 19:59:54 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\index.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
-2021-11-15 19:59:54 - Started 5704
-2021-11-16 08:31:38 - Stopping nodeserver.exe
-2021-11-16 08:31:38 - ProcessKill 5704
-2021-11-16 08:31:38 - Found child process: 21456 Name: conhost.exe
-2021-11-16 08:31:38 - Found child process: 20652 Name: node.exe
-2021-11-16 08:31:38 - Stopping process 21456
-2021-11-16 08:31:38 - Send SIGINT 21456
-2021-11-16 08:31:38 - SIGINT to 21456 failed - Killing as fallback
-2021-11-16 08:31:38 - Stopping process 20652
-2021-11-16 08:31:39 - Send SIGINT 20652
-2021-11-16 08:31:39 - SIGINT to 20652 failed - Killing as fallback
-2021-11-16 08:31:39 - Stopping process 5704
-2021-11-16 08:31:39 - Send SIGINT 5704
-2021-11-16 08:31:39 - SIGINT to 5704 failed - Killing as fallback
-2021-11-16 08:31:39 - Finished nodeserver.exe
-2021-11-17 09:03:23 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\index.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
-2021-11-17 09:03:24 - Started 5196
-2021-11-17 09:19:10 - Stopping nodeserver.exe
-2021-11-17 09:19:10 - ProcessKill 5196
-2021-11-17 09:19:10 - Found child process: 5204 Name: conhost.exe
-2021-11-17 09:19:10 - Found child process: 6012 Name: node.exe
-2021-11-17 09:19:10 - Stopping process 5204
-2021-11-17 09:19:10 - Send SIGINT 5204
-2021-11-17 09:19:11 - SIGINT to 5204 failed - Killing as fallback
-2021-11-17 09:19:11 - Stopping process 6012
-2021-11-17 09:19:11 - Send SIGINT 6012
-2021-11-17 09:19:11 - SIGINT to 6012 failed - Killing as fallback
-2021-11-17 09:19:11 - Stopping process 5196
-2021-11-17 09:19:11 - Send SIGINT 5196
-2021-11-17 09:19:11 - SIGINT to 5196 failed - Killing as fallback
-2021-11-17 09:19:11 - Finished nodeserver.exe
+2021-11-17 18:05:28 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\nodeServiceDaemon.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2021-11-17 18:05:28 - Started 3588
+2021-11-18 10:11:54 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\nodeServiceDaemon.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2021-11-18 10:11:54 - Started 17764
+2021-11-18 10:12:00 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\nodeServiceDaemon.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2021-11-18 10:12:00 - Started 14564
+2021-11-21 00:35:18 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js --file C:\Users\Philip\source\repos\LotusNodeBackend\nodeServiceDaemon.js --scriptoptions= --log "Node Server wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2021-11-21 00:35:21 - Started 6768

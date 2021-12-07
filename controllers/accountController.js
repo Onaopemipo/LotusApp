@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import mssql from "mssql";
+import Joi from "joi";
 
 const sqlConfig = {
   user: "superdbuser",
@@ -42,7 +43,7 @@ const accounts = asyncHandler(async (req, res) => {
             accountNo: "0141944727",
             bank: "GTB"
         }
-        res.sendStatus(200).send(UserAccount); 
+       return res.sendStatus(200); 
 });
 
 
@@ -50,7 +51,7 @@ const withdrawals = asyncHandler(async (req, res) => {
   try {
     let pool = await mssql.connect(sqlConfig);
     let result = await pool.request().query("SELECT * from [dbo].[SystemLogs] WHERE Action = 'TellerCashWithdrawal'");
-    res.json(result);
+   return res.json(result);
     mssql.close;
   } catch (error) {
     console.log(error.message);
@@ -62,7 +63,7 @@ const deposits = asyncHandler(async (req, res) => {
   try {
     let pool = await mssql.connect(sqlConfig);
     let result = await pool.request().query("SELECT * from [dbo].[SystemLogs] WHERE Action = 'TellerCashDeposit'");
-     res.json(result);
+    return res.json(result);
      mssql.close;
   } catch (error) {
     console.log(error.message);
@@ -78,7 +79,7 @@ const accountType = asyncHandler(async (req, res) => {
     let pool = await mssql.connect(sqlConfig);
     let result = await pool.request().query("select * from [dbo].[UserAccounts] where AccountType = '" +accountId+ "'");
     console.log(result);
-    res.json(result);
+   return res.json(result);
     mssql.close;
   } catch (error) {
     console.log(error.message);
@@ -93,14 +94,14 @@ const accountType = asyncHandler(async (req, res) => {
 //         accountNo: "0141944727",
 //         bank: "GTB"
 //     }
-//     res.sendStatus(200).send(UserAccount); 
+//    return res.sendStatus(200).send(UserAccount); 
 // })
 // const singleAccounts = asyncHandler(async (req, res) => {
 //   try {
 //     let pool = await mssql.connect(sqlConfig);
 //     let result = await pool.request().query("select * from dbo.UserAccounts");
 //     console.log(result);
-//     res.json(result);
+//    return res.json(result);
 //     mssql.close;
 //   } catch (error) {
 //     console.log(error.message);
@@ -108,118 +109,104 @@ const accountType = asyncHandler(async (req, res) => {
 //   }
 // });
 
-const cardRequest = asyncHandler(async (req, res) => {
-    let requestBody = req.body;
-    console.log('See the body', requestBody)
-    
-  });
 const userBvn = asyncHandler(async (req, res) => {
-  let accountNo = req.params.accountNo;
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("select * from [dbo].[vwPatientDOBInfo] where DateOfBirth = '" +accountNo+ "'");
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
+  let useracc = req.params.id;
+  if(useracc){
+    console.log(useracc)
+   return res.sendStatus(200);
   }
+  else return res.status(400)
 });
 
 const userNin = asyncHandler(async (req, res) => {
-  let accountNo = req.params.accountNo;
-  try {
-    let pool = await mssql.connect(sqlConfig);
-    let result = await pool.request().query("select * from [dbo].[vwPatientDOBInfo] where DateOfBirth = '" +accountNo+ "'");
-    console.log(result);
-    res.json(result);
-    mssql.close;
-  } catch (error) {
-    console.log(error.message);
-    mssql.close;
+  let useracc = req.params.id;
+  if(useracc){
+    console.log(useracc)
+   return res.sendStatus(200);
   }
+  else return res.status(400)
 });
 
 const depositFx = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
  const withdrawalFx = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
 const newCardRequest = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
 const lotusFxTransfer = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
 const otherFxTransfer = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
 const cardBlock = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200).send();
+   return res.sendStatus(200).send();
   }
-  else res.status(400).send('Failure')
+  else return res.status(400).send('Failure')
 })
 
 const accountLimitUpdate = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200).send();
+   return res.sendStatus(200).send();
   }
-  else res.sendStatus(400)
+  else return res.sendStatus(400)
 })
 
 const updateReferee = asyncHandler(async (req,res) => {
   let reqBody = req.body;
   if(reqBody){
     console.log(reqBody)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.sendStatus(400)
+  else return res.sendStatus(400)
 })
 
 const accountReferee = asyncHandler(async (req,res) => {
-  let reqParam = req.params;
+  let reqParam = req.params.id;
+  console.log('see your params',reqParam)
   if(reqParam){
     console.log(reqParam)
-    res.sendStatus(200);
+   return res.sendStatus(200);
   }
-  else res.sendStatus(400)
+  else return res.sendStatus(400)
 })
 
 
