@@ -1,4 +1,3 @@
-
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 import express from "express";
@@ -16,7 +15,7 @@ app.use(express.json());
 app.use("/api/Common", setupRoute);
 app.use("/api/Account", accountRoute);
 app.use("/api/Loan", loanRoute);
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const sqlConfig = {
   user: "superdbuser",

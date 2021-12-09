@@ -11,9 +11,9 @@ module.exports = {
     },
 
     license: {
-      name: 'Apache 2.0',
-      url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
-  }
+      name: "Apache 2.0",
+      url: "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
   },
 
   servers: [
@@ -32,16 +32,12 @@ module.exports = {
   components: {
     schemas: {
       newCard: {
-        "required": [
-          "accountNo",
-          "cardType",
-          "issuerType",
-        ],
+        required: ["accountNo", "cardType", "issuerType"],
         type: "object", // data type
         properties: {
           id: {
             type: "integer",
-            description: "Request ID"
+            description: "Request ID",
           },
           accountNo: {
             type: "string", // data-type
@@ -63,11 +59,7 @@ module.exports = {
       },
 
       accountLimit: {
-        "required": [
-          "accountNo",
-          "maxAmount",
-          "dateRequested",
-        ],
+        required: ["accountNo", "maxAmount", "dateRequested"],
         type: "object", // data type
         properties: {
           accountNo: {
@@ -76,24 +68,30 @@ module.exports = {
           },
 
           maxAmount: {
-              "type": "number",
-              "format": "double",
+            type: "number",
+            format: "double",
           },
           dateRequested: {
             type: "string", // data type
-            "format": "date-time",
+            format: "date-time",
             description: "start date for block", // desc
           },
         },
       },
 
+      fetchccountLimit: {
+        required: ["accountNo"],
+        type: "object", // data type
+        properties: {
+          accountNo: {
+            type: "string", // data-type
+            description: "Customer account number", // desc
+          },
+        },
+      },
+
       refereeConfirmation: {
-        "required": [
-          "accountNo",
-          "accountName",
-          "email",
-          "phoneNo",
-        ],
+        required: ["accountNo", "accountName", "email", "phoneNo"],
         type: "object", // data type
         properties: {
           accountNo: {
@@ -119,13 +117,13 @@ module.exports = {
       },
 
       blockCard: {
-        "required": [
+        required: [
           "accountNo",
           "cardId",
           "blockType",
           "blockReason",
           "requestedBy",
-          "startDate"
+          "startDate",
         ],
         type: "object", // data type
         properties: {
@@ -151,20 +149,20 @@ module.exports = {
           },
           startDate: {
             type: "string", // data type
-            "format": "date-time",
+            format: "date-time",
             description: "start date for block", // desc
           },
           endDate: {
             type: "string", // data type
-            "format": "date-time",
+            format: "date-time",
             description: "end date for block", // desc
-            "nullable": true
+            nullable: true,
           },
         },
       },
 
       loanApplication: {
-        "required": [
+        required: [
           "accountNo",
           "accountName",
           "email",
@@ -173,7 +171,7 @@ module.exports = {
           "guarantor",
           "duration",
           "amount",
-          "justification"
+          "justification",
         ],
 
         type: "object", // data type
@@ -214,9 +212,9 @@ module.exports = {
           },
 
           amount: {
-            "type": "number",
-            "format": "double",
-            "description": "loan amount", // desc
+            type: "number",
+            format: "double",
+            description: "loan amount", // desc
           },
 
           justification: {
@@ -228,12 +226,7 @@ module.exports = {
 
       fxTransaction: {
         type: "object", // data type
-        "required": [
-          "accountNo",
-          "accountName",
-          "currency",
-          "amount",
-        ],
+        required: ["accountNo", "accountName", "currency", "amount"],
 
         properties: {
           accountNo: {
@@ -247,8 +240,8 @@ module.exports = {
           },
 
           amount: {
-            "type": "number",
-            "format": "double",
+            type: "number",
+            format: "double",
           },
 
           currency: {
@@ -260,7 +253,7 @@ module.exports = {
 
       fxTransfer: {
         type: "object", // data type
-        "required": [
+        required: [
           "customerAccountNo",
           "customerAccountName",
           "currency",
@@ -281,8 +274,8 @@ module.exports = {
           },
 
           amount: {
-            "type": "number",
-            "format": "double",
+            type: "number",
+            format: "double",
           },
 
           currency: {
@@ -304,7 +297,7 @@ module.exports = {
 
       checqueTransaction: {
         type: "object", // data type
-        "required": [
+        required: [
           "customerAccountNo",
           "customerAccountName",
           "currency",
@@ -325,8 +318,8 @@ module.exports = {
           },
 
           amount: {
-            "type": "number",
-            "format": "double",
+            type: "number",
+            format: "double",
           },
 
           currency: {
@@ -345,8 +338,7 @@ module.exports = {
           },
         },
       },
-      
-      
+
       issuerType: {
         type: "string", // data type
         description: "Issuer type", // desc
@@ -357,13 +349,10 @@ module.exports = {
         type: "string", // data-type
         description: "TYpe of Card", // desc
         example: "Visa, Mastercard or Verve", // example of an accountNumber
-
       },
 
       accountNumber: {
-        "required": [
-          "accountNo",
-        ],
+        required: ["accountNo"],
         type: "string", // data type
         description: "An account number of an existing customer", // desc
         example: "0141944727", // example of an accountNumber
@@ -419,483 +408,466 @@ module.exports = {
     },
   },
 
-  "paths": {
+  paths: {
     "/api/Account/cardRequest": {
-      "post": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for making a card request",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["Account Operations"],
+        summary: "API for making a card request",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/newCard"
-              }
+              schema: {
+                $ref: "#/components/schemas/newCard",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/newCard"
-              }
+              schema: {
+                $ref: "#/components/schemas/newCard",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/blockCard": {
-      "post": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for making a blocking stolen, lost or damaged card",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["Account Operations"],
+        summary: "API for making a blocking stolen, lost or damaged card",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/blockCard"
-              }
+              schema: {
+                $ref: "#/components/schemas/blockCard",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/blockCard"
-              }
+              schema: {
+                $ref: "#/components/schemas/blockCard",
+              },
             },
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/blockCard"
-              }
-            }
-          }
+              schema: {
+                $ref: "#/components/schemas/blockCard",
+              },
+            },
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fxDeposit": {
-      "post": {
-        "tags": [
-          "FX Operations"
-        ],
-        "summary": "API for making a card request",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["FX Operations"],
+        summary: "API for making a card request",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransaction"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransaction",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransaction"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransaction",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fxWithdrawal": {
-      "post": {
-        "tags": [
-          "FX Operations"
-        ],
-        "summary": "API for fx withdrawal",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["FX Operations"],
+        summary: "API for fx withdrawal",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransaction"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransaction",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransaction"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransaction",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fxTransferLotus": {
-      "post": {
-        "tags": [
-          "FX Operations"
-        ],
-        "summary": "API for making FX transfer to Lotus account",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["FX Operations"],
+        summary: "API for making FX transfer to Lotus account",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransfer"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransfer",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransfer"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransfer",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fxTransferOthers": {
-      "post": {
-        "tags": [
-          "FX Operations"
-        ],
-        "summary": "API for FX transfer to other banks",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["FX Operations"],
+        summary: "API for FX transfer to other banks",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransfer"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransfer",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fxTransfer"
-              }
+              schema: {
+                $ref: "#/components/schemas/fxTransfer",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     // "/api/Account/checqueWithdrawalOwn": {
@@ -1148,1019 +1120,1055 @@ module.exports = {
     // },
 
     "/api/Account/updateLimit": {
-      "post": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for updating account limit",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["Account Operations"],
+        summary: "API for updating account limit",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/accountLimit"
-              }
+              schema: {
+                $ref: "#/components/schemas/accountLimit",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/accountNo"
-              }
+              schema: {
+                $ref: "#/components/schemas/accountNo",
+              },
             },
             "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/accountNo"
-              }
-            }
-          }
+              schema: {
+                $ref: "#/components/schemas/accountNo",
+              },
+            },
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
+    },
+
+    "/api/Account/fetchLimit": {
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting account limit",
+        parameters: [
+          {
+            name: "accountNo",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
+              "text/plain": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+              "text/json": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
+          },
+          400: {
+            description: "Bad Request",
+            content: {
+              "text/plain": {
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+              "application/json": {
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+              "text/json": {
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+          },
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/getReferee": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting All referees",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting All referees",
+        parameters: [
           {
-
-            "name": "accountNo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
+            name: "accountNo",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
+          },
         ],
-        "responses": {
+        responses: {
           200: {
-            "description": "Success",
-            "content": {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/confirmReferee": {
-      "post": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting confirming referees",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["Account Operations"],
+        summary: "API for getting confirming referees",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/refereeConfirmation"
-              }
+              schema: {
+                $ref: "#/components/schemas/refereeConfirmation",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/refereeConfirmation"
-              }
+              schema: {
+                $ref: "#/components/schemas/refereeConfirmation",
+              },
             },
-
-          }
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fetchcustomersDeposit": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting customer deposit",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting customer deposit",
+        parameters: [
           {
-            "name": "SearchText",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
+            name: "SearchText",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
           },
           {
-            "name": "DateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateFrom",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "DateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateTo",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "Amount",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            name: "Amount",
+            in: "query",
+            schema: {
+              type: "number",
+              format: "double",
+            },
           },
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fetchcustomersWithdrawal": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting All referees",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting All referees",
+        parameters: [
           {
-            "name": "SearchText",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
+            name: "SearchText",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
           },
           {
-            "name": "DateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateFrom",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "DateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateTo",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "Amount",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            name: "Amount",
+            in: "query",
+            schema: {
+              type: "number",
+              format: "double",
+            },
           },
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fetchAccountOpened": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting All referees",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting All referees",
+        parameters: [
           {
-            "name": "SearchText",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
+            name: "SearchText",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
           },
           {
-            "name": "DateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateFrom",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "DateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateTo",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "Amount",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            name: "Amount",
+            in: "query",
+            schema: {
+              type: "number",
+              format: "double",
+            },
           },
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/fetchcustomersTransfers": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting All referees",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for getting All referees",
+        parameters: [
           {
-            "name": "SearchText",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
+            name: "SearchText",
+            in: "query",
+            schema: {
+              type: "string",
+              nullable: true,
+            },
           },
           {
-            "name": "DateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateFrom",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "DateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
+            name: "DateTo",
+            in: "query",
+            schema: {
+              type: "string",
+              format: "date-time",
+              nullable: true,
+            },
           },
           {
-            "name": "Amount",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            name: "Amount",
+            in: "query",
+            schema: {
+              type: "number",
+              format: "double",
+            },
           },
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/checkbvn": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for checking BVN",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for checking BVN",
+        parameters: [
           {
-            "name": "accountNo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "required": true,
-              "nullable": false
-            }
+            name: "accountNo",
+            in: "query",
+            schema: {
+              type: "string",
+              required: true,
+              nullable: false,
+            },
           },
         ],
-        "responses": {
+        responses: {
           200: {
-            "description": "Success",
-            "content": {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Account/checknin": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for checking NIN",
-        "parameters": [
+      get: {
+        tags: ["Account Operations"],
+        summary: "API for checking NIN",
+        parameters: [
           {
-            "name": "accountNo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "required": true,
-              "nullable": false
-            }
+            name: "accountNo",
+            in: "query",
+            schema: {
+              type: "string",
+              required: true,
+              nullable: false,
+            },
           },
         ],
-        "responses": {
+        responses: {
           200: {
-            "description": "Success",
-            "content": {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Loan/loanApplication": {
-      "post": {
-        "tags": [
-          "Loan Operations"
-        ],
-        "summary": "API for loan application",
-        "requestBody": {
-          "description": "",
-          "content": {
+      post: {
+        tags: ["Loan Operations"],
+        summary: "API for loan application",
+        requestBody: {
+          description: "",
+          content: {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/loanApplication"
-              }
+              schema: {
+                $ref: "#/components/schemas/loanApplication",
+              },
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/accountNo"
-              }
+              schema: {
+                $ref: "#/components/schemas/accountNo",
+              },
             },
             "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/accountNo"
-              }
-            }
-          }
+              schema: {
+                $ref: "#/components/schemas/accountNo",
+              },
+            },
+          },
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
+          400: {
+            description: "Bad Request",
+            content: {
               "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
               },
               "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+                schema: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "string",
+                  },
+                },
+              },
+            },
           },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
+          500: {
+            description: "Server Error",
+          },
+        },
+      },
     },
 
     "/api/Common/fetchCategories": {
-      "get": {
-        "tags": [
-          "Common Operations"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+      get: {
+        tags: ["Common Operations"],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          }
-        }
-      }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
+          },
+        },
+      },
     },
 
     "/api/Common/fetchAccountTypes": {
-      "get": {
-        "tags": [
-          "Common Operations"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+      get: {
+        tags: ["Common Operations"],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          }
-        }
-      }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
+          },
+        },
+      },
     },
 
     "/api/Common/fetchIndustries": {
-      "get": {
-        "tags": [
-          "Common Operations"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+      get: {
+        tags: ["Common Operations"],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          }
-        }
-      }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
+          },
+        },
+      },
     },
 
     "/api/Common/fetchAccountOfficer": {
-      "get": {
-        "tags": [
-          "Common Operations"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
+      get: {
+        tags: ["Common Operations"],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
               "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
               "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-  
-    "/api/Common/fetchDashboardData": {
-      "get": {
-        "tags": [
-          "Common Operations"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
               },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     },
-  
-  }
 
-  
-}
+    "/api/Common/fetchDashboardData": {
+      get: {
+        tags: ["Common Operations"],
+        responses: {
+          200: {
+            description: "Success",
+            content: {
+              "text/plain": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+              "text/json": {
+                schema: {
+                  $ref: "#/components/schemas/generalResponse",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
