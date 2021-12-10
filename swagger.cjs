@@ -1075,17 +1075,17 @@ module.exports = {
     //       "content": {
     //         "application/json": {
     //           "schema": {
-    //             "$ref": "#/components/schemas/accountNo"
+    //             "$ref": "#/components/schemas/accountNumber"
     //           }
     //         },
     //         "text/json": {
     //           "schema": {
-    //             "$ref": "#/components/schemas/accountNo"
+    //             "$ref": "#/components/schemas/accountNumber"
     //           }
     //         },
     //         "application/*+json": {
     //           "schema": {
-    //             "$ref": "#/components/schemas/accountNo"
+    //             "$ref": "#/components/schemas/accountNumber"
     //           }
     //         }
     //       }
@@ -1163,18 +1163,184 @@ module.exports = {
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/accountNo"
+                "$ref": "#/components/schemas/accountNumber"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/accountNo"
+                "$ref": "#/components/schemas/accountNumber"
               }
             }
           }
         },
         "responses": {
           "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+
+    "/api/Account/fetchLimit": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting account limit",
+        "parameters": [
+          {
+
+            "name": "accountNo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+
+          // {
+          //   "name": "accountName",
+          //   "in": "query",
+          //   "schema": {
+          //     "type": "string",
+          //     "nullable": true
+          //   }
+          // },
+          // {
+          //   "name": "DateFrom",
+          //   "in": "query",
+          //   "schema": {
+          //     "type": "string",
+          //     "format": "string",
+          //     "nullable": true
+          //   }
+          // },
+        ],
+        "responses": {
+          200: {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+
+    "/api/Account/fetchLimit": {
+      "get": {
+        "tags": [
+          "Account Operations"
+        ],
+        "summary": "API for getting All referees",
+        "parameters": [
+          {
+
+            "name": "accountNo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          200: {
             "description": "Success",
             "content": {
               "text/plain": {
@@ -1943,12 +2109,12 @@ module.exports = {
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/accountNo"
+                "$ref": "#/components/schemas/accountNumber"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/accountNo"
+                "$ref": "#/components/schemas/accountNumber"
               }
             }
           }

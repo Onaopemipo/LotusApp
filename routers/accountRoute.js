@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { accountType, accounts, deposits, withdrawals, userNin,userBvn, 
     depositFx, withdrawalFx, cardBlock,accountLimitUpdate, otherFxTransfer,
-    lotusFxTransfer, newCardRequest, accountReferee,updateReferee
+    lotusFxTransfer, newCardRequest, accountReferee,updateReferee, accountLimit
 
 } from "../controllers/accountController.js";
 
@@ -25,7 +25,7 @@ router.post("/blockCard", cors({origin: '*'}), cardBlock);
 router.post("/fxDeposit", cors({origin: '*'}), depositFx);
 // router.get("/fetchAccountOpened", cors({origin: '*'}), accounts);
 // router.get("/fetchcustomersDeposit", cors({origin: '*'}), deposits);
-// router.get("/fetchcustomersWithdrawal", cors({origin: '*'}), withdrawals);
+router.get("/fetchLimit", cors({origin: '*'}), accountLimit);
 router.get("/accounttype/:id", cors({origin: '*'}), accountType);
 router.get("/createUserId", cors({origin: '*'}), deposits);
 router.post("/updateLimit", cors({origin: '*'}), accountLimitUpdate);
