@@ -191,7 +191,7 @@ const accountLimitUpdate = asyncHandler(async (req,res) => {
 })
 
 const accountLimit = asyncHandler(async (req,res) => {
-  let reqBody = req.body;
+  let reqBody = req.params.accountNumber;
   if(reqBody){
     console.log(reqBody)
    return res.sendStatus(200).send();

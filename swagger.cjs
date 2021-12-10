@@ -1230,7 +1230,7 @@ module.exports = {
       }
     },
 
-    "/api/Account/fetchLimit": {
+    "/api/Account/fetchLimit/{accountNumber}": {
       "get": {
         "tags": [
           "Account Operations"
@@ -1239,8 +1239,8 @@ module.exports = {
         "parameters": [
           {
 
-            "name": "accountNo",
-            "in": "query",
+            "name": "accountNumber",
+            "in": "path",
             "schema": {
               "type": "string",
               "nullable": true
@@ -1264,80 +1264,6 @@ module.exports = {
           //     "nullable": true
           //   }
           // },
-        ],
-        "responses": {
-          200: {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/generalResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-
-    "/api/Account/fetchLimit": {
-      "get": {
-        "tags": [
-          "Account Operations"
-        ],
-        "summary": "API for getting All referees",
-        "parameters": [
-          {
-
-            "name": "accountNo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
         ],
         "responses": {
           200: {
