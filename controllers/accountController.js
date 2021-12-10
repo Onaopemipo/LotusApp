@@ -120,7 +120,7 @@ const accountType = asyncHandler(async (req, res) => {
 // });
 
 const userBvn = asyncHandler(async (req, res) => {
-  let useracc = req.params.id;
+  let useracc = req.params.accountNo;
   if (useracc) {
     console.log(useracc);
     return res.sendStatus(200);
@@ -128,7 +128,7 @@ const userBvn = asyncHandler(async (req, res) => {
 });
 
 const userNin = asyncHandler(async (req, res) => {
-  let useracc = req.params.id;
+  let useracc = req.params.accountNo;
   if (useracc) {
     console.log(useracc);
     return res.sendStatus(200);
@@ -191,26 +191,12 @@ const accountLimitUpdate = asyncHandler(async (req, res) => {
   } else return res.sendStatus(400);
 });
 
-const accountLimitFetch = asyncHandler(async (req, res) => {
-  let { accountNo } = req.params;
-  console.log(accountNo);
-  res.json(accountNo);
-  // try {
-  //   let pool = await mssql.connect(sqlConfig);
-  //   let result = await pool
-  //     .request()
-  //     .query(
-  //       `SELECT * from [dbo].[TransactionLimit] WHERE accountNumber = ${accountNo}`
-  //     );
-  //   return res.json({
-  //     success: true,
-  //     data: result,
-  //   });
-  //   mssql.close;
-  // } catch (error) {
-  //   console.log(error.message);
-  //   mssql.close;
-  // }
+const accountLimit = asyncHandler(async (req, res) => {
+  let reqBody = req.body;
+  if (reqBody) {
+    console.log(reqBody);
+    return res.sendStatus(200).send();
+  } else return res.sendStatus(400);
 });
 
 const updateReferee = asyncHandler(async (req, res) => {
@@ -246,5 +232,5 @@ export {
   newCardRequest,
   updateReferee,
   accountReferee,
-  accountLimitFetch,
+  accountLimit,
 };

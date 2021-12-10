@@ -16,7 +16,7 @@ import {
   newCardRequest,
   accountReferee,
   updateReferee,
-  accountLimitFetch,
+  accountLimit,
 } from "../controllers/accountController.js";
 
 const router = express.Router();
@@ -38,10 +38,9 @@ router.post("/blockCard", cors({ origin: "*" }), cardBlock);
 router.post("/fxDeposit", cors({ origin: "*" }), depositFx);
 // router.get("/fetchAccountOpened", cors({origin: '*'}), accounts);
 // router.get("/fetchcustomersDeposit", cors({origin: '*'}), deposits);
-// router.get("/fetchcustomersWithdrawal", cors({origin: '*'}), withdrawals);
+router.get("/fetchLimit", cors({ origin: "*" }), accountLimit);
 router.get("/accounttype/:id", cors({ origin: "*" }), accountType);
 router.get("/createUserId", cors({ origin: "*" }), deposits);
 router.post("/updateLimit", cors({ origin: "*" }), accountLimitUpdate);
-router.post("/fetchLimit", cors({ origin: "*" }), accountLimitFetch);
 
 export default router;
