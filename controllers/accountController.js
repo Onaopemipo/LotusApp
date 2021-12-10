@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import mssql from "mssql";
 import Joi from "joi";
+import { json } from "express";
 
 const sqlConfig = {
   user: "superdbuser",
@@ -121,10 +122,8 @@ const accountType = asyncHandler(async (req, res) => {
 
 const userBvn = asyncHandler(async (req, res) => {
   let useracc = req.params.accountNo;
-  if (useracc) {
-    console.log(useracc);
-    return res.sendStatus(200);
-  } else return res.status(400);
+  console.log(req.params);
+  res.json(req.params);
 });
 
 const userNin = asyncHandler(async (req, res) => {
@@ -185,18 +184,14 @@ const cardBlock = asyncHandler(async (req, res) => {
 
 const accountLimitUpdate = asyncHandler(async (req, res) => {
   let reqBody = req.body;
-  if (reqBody) {
-    console.log(reqBody);
-    return res.sendStatus(200).send();
-  } else return res.sendStatus(400);
+  console.log(req.Body);
+  res.json(req.body);
 });
 
 const accountLimit = asyncHandler(async (req, res) => {
-  let reqBody = req.body;
-  if (reqBody) {
-    console.log(reqBody);
-    return res.sendStatus(200).send();
-  } else return res.sendStatus(400);
+  // let { accountNo } = req.parameters;
+  console.log(req.parameters);
+  res.json(req.parameters);
 });
 
 const updateReferee = asyncHandler(async (req, res) => {
