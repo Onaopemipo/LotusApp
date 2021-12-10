@@ -183,19 +183,87 @@ const cardBlock = asyncHandler(async (req, res) => {
 });
 
 const accountLimitUpdate = asyncHandler(async (req, res) => {
-  let reqBody = req.body;
-  console.log(req.Body);
-  res.json(req.body);
+  const { accountNo, maxAmount, accName } = req.body;
+
+  try {
+    let pool = await mssql.connect(sqlConfig);
+    let acc = await pool
+      .request()
+      .query(
+        "select * from [dbo].[TransactionLimit] where CONVERT(VARCHAR, accountNumber) = '" +
+          accountNo +
+          "'"
+      );
+
+    if (acc.recordset.length == 0) {
+      let result = await pool
+        .request()
+        .query(
+          `INSERT INTO [dbo].[TransactionLimit](accountNumber, accountName, limit) VALUES('${accountNo}', '${accName}', ${maxAmount})`
+        );
+      res.json({
+        success: true,
+        message: "updated successfully",
+      });
+      mssql.close;
+    } else {
+      let result = await pool
+        .request()
+        .query(`UPDATE [dbo].[TransactionLimit] SET limit = ${maxAmount}`);
+      res.json({
+        success: true,
+        message: "updated successfully",
+      });
+      mssql.close;
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.json({
+      success: false,
+      message: error.message,
+    });
+    mssql.close;
+  }
 });
 
 const accountLimit = asyncHandler(async (req, res) => {
-  // let { accountNo } = req.parameters;
-  console.log(req.parameters);
-  res.json(req.parameters);
+  let account = req.params.accountNumber;
+  try {
+    let pool = await mssql.connect(sqlConfig);
+    let result = await pool
+      .request()
+      .query(
+        "select * from [dbo].[TransactionLimit] where CONVERT(VARCHAR, accountNumber) = '" +
+          account +
+          "'"
+      );
+    console.log(result);
+    if (result.recordset.length == 0) {
+      res.json({
+        sucess: true,
+        limit: 200000,
+        message: "limit fetched successfully",
+      });
+    } else {
+      res.json({
+        sucess: true,
+        limit: result.recordset[0].limit,
+        message: "limit fetched successfully",
+      });
+    }
+
+    mssql.close;
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+    mssql.close;
+  }
 });
 
 const updateReferee = asyncHandler(async (req, res) => {
-  let reqBody = req.body;
+  let accountNumber = req.params.accountNumber;
   if (reqBody) {
     console.log(reqBody);
     return res.sendStatus(200);

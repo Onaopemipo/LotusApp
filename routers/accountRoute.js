@@ -38,7 +38,7 @@ router.post("/blockCard", cors({ origin: "*" }), cardBlock);
 router.post("/fxDeposit", cors({ origin: "*" }), depositFx);
 // router.get("/fetchAccountOpened", cors({origin: '*'}), accounts);
 // router.get("/fetchcustomersDeposit", cors({origin: '*'}), deposits);
-router.get("/fetchLimit", cors({ origin: "*" }), accountLimit);
+router.get("/fetchLimit/:accountNumber", cors({ origin: "*" }), accountLimit);
 router.get("/accounttype/:id", cors({ origin: "*" }), accountType);
 router.get("/createUserId", cors({ origin: "*" }), deposits);
 router.post("/updateLimit", cors({ origin: "*" }), accountLimitUpdate);
