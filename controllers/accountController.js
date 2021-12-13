@@ -228,6 +228,12 @@ const accountLimitUpdate = asyncHandler(async (req, res) => {
 
 const accountLimit = asyncHandler(async (req, res) => {
   let account = req.params.accountNumber;
+  if (account == null || account == undefined || account == "") {
+    res.json({
+      sucess: false,
+      message: "No account selected",
+    });
+  }
   try {
     let pool = await mssql.connect(sqlConfig);
     let result = await pool
