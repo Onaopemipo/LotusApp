@@ -18,7 +18,7 @@ module.exports = {
 
   servers: [
     {
-      url: "http://localhost:9000", // url
+      url: "http://localhost:9600", // url
       description: "Local server", // name
     },
   ],

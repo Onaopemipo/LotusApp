@@ -3,7 +3,7 @@ import Service from 'node-windows';
 const myService = Service.Service
 // Create a new service object
 var svc = new myService({
-  name:'Nose Server',
+  name:'Node Server',
   description: 'LOTUS API nodejs web server.',
   script: 'C:\\Users\\Philip\\source\\repos\\LotusNodeBackend\\nodeServiceDaemon.js',
   nodeOptions: [

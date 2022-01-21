@@ -7,7 +7,7 @@
 	<argument>--max_old_space_size=4096</argument>
 	<argument>C:\Users\Philip\source\repos\LotusNodeBackend\node_modules\node-windows\lib\wrapper.js</argument>
 	<argument>--file</argument>
-	<argument>C:\Users\Philip\source\repos\LotusNodeBackend\nodeServiceDaemon.js</argument>
+	<argument>C:\Users\Philip\source\repos\LotusNodeBackend\index.js</argument>
 	<argument>--scriptoptions=</argument>
 	<argument>--log</argument>
 	<argument>Node Server wrapper</argument>

@@ -5,7 +5,7 @@ const myService = Service.Service
 var svc = new myService({
   name:'Node Server',
   description: 'LOTUS API nodejs web server.',
-  script: 'C:\\Users\\Philip\\source\\repos\\LotusNodeBackend\\nodeServiceDaemon.js',
+  script: 'C:\\Users\\Philip\\source\\repos\\LotusNodeBackend\\index.js',
   nodeOptions: [
     '--harmony',
     '--max_old_space_size=4096'
