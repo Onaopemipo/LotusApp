@@ -118,3 +118,4 @@ ConnectionPool {
 }
 connected now!
 Failed to connect to mssql-35101-0.cloudclusters.net:35101 - getaddrinfo EAI_AGAIN mssql-35101-0.cloudclusters.net
+{ recordsets: [ [] ], recordset: [], output: {}, rowsAffected: [ 0 ] }
